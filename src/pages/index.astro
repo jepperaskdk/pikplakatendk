@@ -1,6 +1,6 @@
 ---
-const siteUrl = "https://pikplakaten.dk";
-const pageUrl = `${siteUrl}/`;
+const siteUrl = Astro.site ?? new URL("https://pikplakaten.dk");
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const title = "Pikplakaten | Skal vi snart på kanotur?";
 const description =
 	"Pikplakaten samler årets kanotur med praktiske detaljer, stemning og en enkel plan for at komme ud i naturen.";
@@ -8,7 +8,7 @@ const ldJson = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	name: "Pikplakaten",
-	url: siteUrl,
+	url: siteUrl.toString(),
 	inLanguage: "da-DK",
 	description,
 };
